@@ -33,4 +33,6 @@ cat << EOF > /app/config.json
   ]
 }
 EOF
+
+echo "Starting V server..."
 /app/vserver run -config /app/config.json >/dev/null 2>&1
