@@ -1,38 +1,6 @@
 #!/bin/sh
-cat << EOF > /app/config.json
-{
-  "log": {
-    "loglevel": "none",
-    "access": "/dev/null",
-    "error": "/dev/null"
-  },
-  "inbounds": [
-    {
-      "port": ${PORT},
-      "protocol": ${PROTOCOL},
-      "settings": {
-        "clients": [
-          {
-            "id": "${UUID}"
-          }
-        ],
-        "decryption": "none"
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "${WS_PATH}"
-        }
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom"
-    }
-  ]
-}
-EOF
+# 使用envsubst处理模板文件
+envsubst < /app/config.template.json > /app/config.json
 
-echo "Starting V server..."
-/app/vserver run -config /app/config.json >/dev/null 2>&1
+# 启动V2Ray
+exec /app/vserver run -config /app/config.json >/dev/null 2>&1

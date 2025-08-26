@@ -15,8 +15,9 @@ ENV PROTOCOL='v''less'
 # 3. 设置工作目录
 WORKDIR /app/
 
-# 4. 复制启动脚本
+# 4. 复制启动脚本和配置文件模板
 COPY start.sh .
+COPY config.template.json .
 
 # 5. 下载vserver并设置权限（合并相关操作）
 RUN wget https://github.com/cylind/enginx/releases/latest/download/vserver && \
