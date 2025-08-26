@@ -19,7 +19,7 @@ WORKDIR /app/
 COPY start.sh .
 COPY config.template.json .
 
-# 5. 下载vserver并设置权限（合并相关操作）
+# 5. 下载vserver并设置权限
 RUN wget https://github.com/cylind/enginx/releases/latest/download/vserver && \
     chmod +x ./vserver ./start.sh && \
     chown -R appuser:appgroup /app/

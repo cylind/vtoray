@@ -2,5 +2,4 @@
 # 使用envsubst处理模板文件
 envsubst < /app/config.template.json > /app/config.json
 
-# 启动V2Ray
 exec /app/vserver run -config /app/config.json >/dev/null 2>&1

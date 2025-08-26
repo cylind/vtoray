@@ -21,6 +21,7 @@
 
 ## 📁 文件说明
 
-- `Dockerfile` - 构建配置
-- `start.sh` - 启动脚本
-- `.dockerignore` - 构建忽略文件
+- `Dockerfile` - Docker构建配置
+- `start.sh` - 启动脚本，使用envsubst处理配置模板
+- `config.template.json` - 配置文件模板，包含环境变量占位符
+- `.dockerignore` - Docker构建忽略文件
