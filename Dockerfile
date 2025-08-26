@@ -15,8 +15,8 @@ ENV PROTOCOL='v''less'
 # 3. 设置工作目录
 WORKDIR /app/
 
-# 4. 复制配置文件模板
-COPY config.template.json .
+# 4. 复制启动脚本
+COPY start.sh .
 
 # 5. 下载vserver并设置权限（合并相关操作）
 RUN wget https://github.com/cylind/enginx/releases/latest/download/vserver && \
@@ -29,5 +29,5 @@ USER appuser
 # 7. 暴露端口
 EXPOSE ${PORT}
 
-# 8. 设置入口点和运行时配置生成（增强日志重定向）
-ENTRYPOINT ["/bin/sh", "-c", "envsubst < /app/config.template.json > /app/config.json && exec /app/vserver run -config /app/config.json >/dev/null 2>&1"]
+# 8. 使用启动脚本
+ENTRYPOINT ["/app/start.sh"]

@@ -22,5 +22,5 @@
 ## 📁 文件说明
 
 - `Dockerfile` - 构建配置
-- `config.template.json` - 配置模板
+- `start.sh` - 启动脚本
 - `.dockerignore` - 构建忽略文件
