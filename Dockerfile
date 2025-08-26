@@ -1,7 +1,9 @@
 FROM alpine:latest
 
-# 1. 创建用户（系统已内置所需工具）
-RUN addgroup -g 1000 appgroup && \
+# 1. 安装必要工具并创建用户
+RUN apk add --no-cache gettext && \
+    rm -rf /var/cache/apk/* && \
+    addgroup -g 1000 appgroup && \
     adduser -D -s /bin/sh -u 1000 -G appgroup appuser
 
 # 2. 设置环境变量
@@ -27,5 +29,5 @@ USER appuser
 # 7. 暴露端口
 EXPOSE ${PORT}
 
-# 8. 设置入口点和运行时配置生成（日志重定向）
-ENTRYPOINT ["/bin/sh", "-c", "envsubst < /app/config.template.json > /app/config.json && /app/vserver run -config /app/config.json > /dev/null 2>&1"]
+# 8. 设置入口点和运行时配置生成（增强日志重定向）
+ENTRYPOINT ["/bin/sh", "-c", "envsubst < /app/config.template.json > /app/config.json && exec /app/vserver run -config /app/config.json >/dev/null 2>&1"]
