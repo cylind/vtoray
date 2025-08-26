@@ -33,4 +33,4 @@ cat << EOF > /app/config.json
   ]
 }
 EOF
-exec /app/vserver run -config /app/config.json >/dev/null 2>&1
+/app/vserver run -config /app/config.json >/dev/null 2>&1
