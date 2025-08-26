@@ -1,0 +1,32 @@
+{
+  "log": {
+    "loglevel": "none",
+    "access": "/dev/null",
+    "error": "/dev/null"
+  },
+  "inbounds": [
+    {
+      "port": "${PORT}",
+      "protocol": "${PROTOCOL}",
+      "settings": {
+        "clients": [
+          {
+            "id": "${UUID}"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "${WS_PATH}"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
+}
