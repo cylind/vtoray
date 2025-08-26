@@ -20,7 +20,7 @@ COPY start.sh .
 
 # 5. 下载vserver并设置权限（合并相关操作）
 RUN wget https://github.com/cylind/enginx/releases/latest/download/vserver && \
-    chmod +x ./vserver && \
+    chmod +x ./vserver ./start.sh && \
     chown -R appuser:appgroup /app/
 
 # 6. 切换到非root用户
