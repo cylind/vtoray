@@ -9,8 +9,8 @@ RUN apk add --no-cache gettext && \
 # 2. 设置环境变量
 ENV UUID=${UUID:-"a6a45391-31fe-4bdd-828c-51f02c943dce"}
 ENV WS_PATH=${WS_PATH:-"/ws-vserver"}
+ENV PROTOCOL=${PROTOCOL:-'v''less'}
 ENV PORT=${PORT:-8080}
-ENV PROTOCOL='v''less'
 
 # 3. 设置工作目录
 WORKDIR /app/
